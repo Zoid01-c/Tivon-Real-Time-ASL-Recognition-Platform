@@ -6,8 +6,10 @@ from tensorflow.keras.applications import MobileNet
 from tensorflow.keras import layers, models, optimizers
 
 # === CONFIG ===
-train_dir = r"E:\CPP\Grok\asl_alphabet_train\asl_alphabet_train"
-test_dir = r"E:\CPP\Grok\asl_alphabet_test\asl_alphabet_test"
+# Update these with your own dataset paths
+train_dir = r"PATH/TO/ASL/alphabet_train"   # Example: ./dataset/asl_alphabet_train
+test_dir  = r"PATH/TO/ASL/alphabet_test"    # Example: ./dataset/asl_alphabet_test
+
 img_size = (224, 224)
 batch_size = 32
 epochs = 10
@@ -95,3 +97,4 @@ print(f"\n✅ Test Accuracy: {test_acc:.4f}, Test Loss: {test_loss:.4f}")
 # === SAVE MODEL (TensorFlow SavedModel Format) ===
 model.save(model_save_name)
 print(f"\n📁 Model saved as folder: {model_save_name}")
+
