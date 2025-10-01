@@ -59,17 +59,12 @@ Click any thumbnail to view the full screenshot:
 
 You can watch the demo here:  
 
-[![Demo Video](ScreenShot/Home.png)](ScreenShot/Demo.mp4)  
-
-*(Click the thumbnail above to view the demo – opens the video file from the repo.)*  
-
-Or directly embed the video (may not always play inline on GitHub):  
-
-```html
-<video src="ScreenShot/Demo.mp4" width="600" controls></video>
-````
 
 ---
+
+https://github.com/user-attachments/assets/7875c605-e7b8-417b-96d8-bb8e7a6e119e
+
+
 
 ## ⚙️ How It Works
 
