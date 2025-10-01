@@ -1,10 +1,4 @@
-Perfect! Here’s your **updated, fully polished README** without the license section, ready for GitHub:
-
----
-
 # Tivon – Real-Time ASL Recognition Web App
-
-![Tivon Banner](media/banner.png)
 
 Tivon is a **real-time American Sign Language (ASL) recognition platform** that helps users learn and practice ASL using just a webcam. Powered by **deep learning** and **computer vision**, Tivon runs entirely in your browser with a focus on **privacy, accessibility, and user engagement**.
 
