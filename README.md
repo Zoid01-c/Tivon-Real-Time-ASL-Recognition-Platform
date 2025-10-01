@@ -114,12 +114,6 @@ Contributions are welcome! See `CONTRIBUTING.md` for guidelines.
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** – see `LICENSE` for details.
-
----
-
 ## 📬 Contact
 
 Created by **[Khan Rehan]** – reach out with questions or suggestions!
