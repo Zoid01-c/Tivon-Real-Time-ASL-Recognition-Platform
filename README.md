@@ -121,4 +121,4 @@ Open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ## 📬 Contact
 
-Created by **[Khan Rehan]** – reach out with questions or suggestions!
+Created by **[Khan Rehan Jakir]** – reach out with questions or suggestions!
