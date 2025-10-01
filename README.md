@@ -65,6 +65,7 @@ You can watch the demo here:
 https://github.com/user-attachments/assets/7875c605-e7b8-417b-96d8-bb8e7a6e119e
 
 🌐 Try the live demo: https://tivon-asl-recognition.netlify.app/
+⚠️ Note: This demo is only a frontend preview. It does not contain the actual model/backend.
 
 
 
