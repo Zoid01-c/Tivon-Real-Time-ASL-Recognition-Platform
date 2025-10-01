@@ -119,12 +119,6 @@ Open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! See `CONTRIBUTING.md` for guidelines.
-
----
-
 ## 📬 Contact
 
 Created by **[Khan Rehan]** – reach out with questions or suggestions!
