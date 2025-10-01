@@ -64,6 +64,8 @@ You can watch the demo here:
 
 https://github.com/user-attachments/assets/7875c605-e7b8-417b-96d8-bb8e7a6e119e
 
+🌐 Try the live demo: tivon-asl-recognition.netlify.app
+
 
 
 ## ⚙️ How It Works
