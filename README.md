@@ -13,6 +13,16 @@ Tivon is a **real-time American Sign Language (ASL) recognition platform** that 
 * **Responsive Design:** Works on desktop, tablet, and mobile
 * **Privacy First:** All processing happens locally; no data leaves your device
 
+## ℹ️ Why “Tivon”?
+
+Pronunciation: “Tih-von”
+
+Breakdown: Combines “talk” (ti) and “vocal” (von), symbolizing communication through signs
+
+Why it fits: Simple, friendly, and approachable with a modern tech vibe
+
+Uniqueness: “Tivon” is an invented word with no existing online footprint in this context
+
 ---
 
 ## 🖼 Screenshots Carousel
