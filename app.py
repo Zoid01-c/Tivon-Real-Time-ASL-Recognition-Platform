@@ -220,11 +220,22 @@ def handle_connect():
     emit('sign_update', {'sign': current_sign})
 
 if __name__ == '__main__':
-    socketio.run(
-        app,
-        host='0.0.0.0',
-        port=5000,
-        debug=False,
-        use_reloader=False,
-        allow_unsafe_werkzeug=True
-    )
+    print("Starting ASL Recognition Server...")
+    print("Model loaded successfully!")
+    print("Server will be available at: http://127.0.0.1:5000")
+    print("Press Ctrl+C to stop the server")
+    try:
+        socketio.run(
+            app,
+            host='0.0.0.0',
+            port=5000,
+            debug=False,
+            use_reloader=False,
+            allow_unsafe_werkzeug=True
+        )
+    except KeyboardInterrupt:
+        print("\nServer stopped by user")
+    except Exception as e:
+        print(f"Server error: {e}")
+        print("Trying alternative startup...")
+        app.run(host='0.0.0.0', port=5000, debug=False)
