@@ -5,8 +5,12 @@ from tensorflow.keras.preprocessing import image
 from sklearn.metrics import accuracy_score
 
 # ====== Paths ======
-model_path = r"E:\CPP\Grok\Models\american-sign-language-tensorflow2-american-sign-language-v1"  # Path to the Kaggle ASL model (.h5 or SavedModel format)
-test_folder_path = r"E:\CPP\Grok\asl_alphabet_test\asl_alphabet_test"  # Path to test images
+# Path to the trained ASL model (.h5 file or SavedModel directory)
+model_path = r"PATH_TO_YOUR_MODEL/american-sign-language-tensorflow2-american-sign-language-v1"
+
+# Path to the test images folder (ASL alphabet test dataset)
+test_folder_path = r"PATH_TO_YOUR_DATASET/asl_alphabet_test"
+
 
 # ====== Class Labels ======
 class_labels = [
@@ -76,3 +80,4 @@ def evaluate_model_on_flat_folder(test_folder):
 
 # ====== Run Evaluation ======
 evaluate_model_on_flat_folder(test_folder_path)
+
