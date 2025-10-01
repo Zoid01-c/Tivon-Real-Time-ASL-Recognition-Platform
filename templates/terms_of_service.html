@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Terms of Service - Tivon{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Terms of Service</h1>
+                    
+                    <div class="terms-content">
+                        <section class="mb-4">
+                            <h2>Agreement to Terms</h2>
+                            <p>By accessing and using Tivon's ASL Recognition service, you agree to be bound by these Terms of Service and all applicable laws and regulations.</p>
+                        </section>
+
+                        <section class="mb-4">
+                            <h2>Use License</h2>
+                            <p>Permission is granted to temporarily use Tivon's ASL Recognition service for personal, non-commercial use only. This is the grant of a license, not a transfer of title.</p>
+                            <p>Under this license, you may not:</p>
+                            <ul>
+                                <li>Modify or copy the materials</li>
+                                <li>Use the materials for any commercial purpose</li>
+                                <li>Attempt to reverse engineer any software contained in Tivon's service</li>
+                                <li>Remove any copyright or other proprietary notations</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-4">
+                            <h2>Disclaimer</h2>
+                            <p>Tivon's materials are provided on an 'as is' basis. Tivon makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation:</p>
+                            <ul>
+                                <li>Merchantability</li>
+                                <li>Fitness for a particular purpose</li>
+                                <li>Non-infringement of intellectual property</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-4">
+                            <h2>Limitations</h2>
+                            <p>In no event shall Tivon or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use Tivon's materials.</p>
+                        </section>
+
+                        <section class="mb-4">
+                            <h2>Revisions</h2>
+                            <p>Tivon may revise these terms of service at any time without notice. By using this service, you agree to be bound by the current version of these terms of service.</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .terms-content {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .terms-content h2 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    
+    .terms-content section {
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .terms-content section:last-child {
+        border-bottom: none;
+    }
+    
+    .terms-content ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .terms-content li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+    
+    .card-body {
+        padding: 2rem;
+    }
+    
+    h1 {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+</style>
+{% endblock %} 

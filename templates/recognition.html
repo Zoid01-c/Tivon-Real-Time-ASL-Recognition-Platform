@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+
+{% block title %}ASL Recognition - Live Demo{% endblock %}
+
+{% block extra_css %}
+<style>
+    .recognition-container {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        min-height: calc(100vh - 180px);
+    }
+
+    .video-section {
+        position: relative;
+        background: var(--card-bg);
+        border-radius: 20px;
+        overflow: hidden;
+        border: var(--card-border);
+        transition: all var(--transition-speed) ease;
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-top: 75%;
+        background: rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+    }
+
+    .video-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .current-sign {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(18, 18, 18, 0.95);
+        padding: 1.5rem;
+        border-radius: 16px;
+        color: var(--text-color);
+        font-size: 1.2rem;
+        font-weight: 500;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        min-width: 240px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        transition: all var(--transition-speed) ease;
+    }
+
+    .current-sign.hidden {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    .sign-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary-light);
+    }
+
+    .sign-header i {
+        font-size: 1.2rem;
+    }
+
+    .confidence-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .confidence-fill {
+        height: 100%;
+        width: 0%;
+        transition: all 0.3s ease;
+        border-radius: 3px;
+    }
+
+    .confidence-high {
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+    }
+
+    .confidence-medium {
+        background: linear-gradient(90deg, #FFA726, #FFD54F);
+    }
+
+    .confidence-low {
+        background: linear-gradient(90deg, #EF5350, #FF8A80);
+    }
+
+    .confidence-text {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    .instructions {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(18, 18, 18, 0.95);
+        padding: 1.5rem;
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        max-width: 320px;
+    }
+
+    .instructions h3 {
+        color: var(--primary-light);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .instructions ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .instructions li {
+        color: var(--text-secondary);
+        margin-bottom: 0.8rem;
+        padding-left: 1.5rem;
+        position: relative;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .instructions li:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        background: var(--primary-color);
+        border-radius: 50%;
+    }
+
+    .instructions li:last-child {
+        margin-bottom: 0;
+    }
+
+    .asl-sidebar {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 1.5rem;
+        border: var(--card-border);
+        height: fit-content;
+        transition: all var(--transition-speed) ease;
+    }
+
+    .sidebar-header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-color);
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .asl-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .asl-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 0.75rem;
+        text-align: center;
+        transition: all var(--transition-speed) ease;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .asl-card:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--primary-color);
+    }
+
+    .asl-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        transition: all var(--transition-speed) ease;
+    }
+
+    .asl-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .asl-card .letter {
+        color: var(--text-color);
+        margin-top: 0.75rem;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 1200px) {
+        .recognition-container {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .asl-grid {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        .current-sign {
+            position: fixed;
+            top: 100px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .recognition-container {
+            padding: 1rem;
+        }
+
+        .asl-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .current-sign {
+            right: 10px;
+            min-width: 200px;
+        }
+
+        .instructions {
+            left: 10px;
+            max-width: calc(100% - 20px);
+            bottom: 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .asl-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .current-sign {
+            padding: 1rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="recognition-container">
+    <div class="video-section">
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" alt="ASL Recognition Feed">
+            <div class="current-sign hidden" id="currentSign">
+                <div class="sign-header">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <span id="signText">Waiting for hand gesture...</span>
+                </div>
+                <div class="confidence-bar">
+                    <div class="confidence-fill" id="confidenceFill"></div>
+                </div>
+                <div class="confidence-text" id="confidenceText"></div>
+            </div>
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> How to Use</h3>
+                <ul>
+                    <li>Position your hand clearly in front of the camera</li>
+                    <li>Make sure your hand is well-lit and visible</li>
+                    <li>Hold your hand steady for better recognition</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="asl-sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-sign-language"></i>
+            ASL Alphabet Reference
+        </div>
+        <div class="asl-grid">
+            {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+            <div class="asl-card" data-letter="{{ letter }}">
+                <img src="{{ url_for('static', filename='images/asl_alphabet/' + letter + '_test.jpg') }}" alt="ASL Sign {{ letter }}">
+                <div class="letter">{{ letter }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const socket = io();
+        const currentSignElement = document.getElementById('currentSign');
+        const signTextElement = document.getElementById('signText');
+        const confidenceFill = document.getElementById('confidenceFill');
+        const confidenceText = document.getElementById('confidenceText');
+
+        socket.on('sign_update', function(data) {
+            if (data.sign) {
+                currentSignElement.classList.remove('hidden');
+                signTextElement.textContent = `Detected Sign: ${data.sign}`;
+                const confidence = data.confidence * 100;
+                
+                confidenceFill.style.width = `${confidence}%`;
+                confidenceText.textContent = `Confidence: ${confidence.toFixed(1)}%`;
+
+                if (confidence >= 80) {
+                    confidenceFill.className = 'confidence-fill confidence-high';
+                } else if (confidence >= 60) {
+                    confidenceFill.className = 'confidence-fill confidence-medium';
+                } else {
+                    confidenceFill.className = 'confidence-fill confidence-low';
+                }
+            } else {
+                currentSignElement.classList.add('hidden');
+            }
+        });
+
+        // Add hover effect to ASL cards
+        const aslCards = document.querySelectorAll('.asl-card');
+        aslCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    });
+</script>
+{% endblock %} 

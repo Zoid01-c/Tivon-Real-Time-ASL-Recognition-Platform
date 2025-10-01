@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - Tivon{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Privacy Policy</h1>
+                    
+                    <div class="policy-content">
+                        <section class="mb-4">
+                            <h2>Introduction</h2>
+                            <p>At Tivon, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our ASL Recognition service.</p>
+                        </section>
+
+                        <section class="mb-4">
+                            <h2>Information We Collect</h2>
+                            <p>We collect information that you voluntarily provide to us when using our service:</p>
+                            <ul>
+                                <li>Camera feed data during ASL recognition sessions (not stored)</li>
+                                <li>Device information for service optimization</li>
+                                <li>Usage statistics to improve our service</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-4">
+                            <h2>How We Use Your Information</h2>
+                            <p>The information we collect is used solely for:</p>
+                            <ul>
+                                <li>Providing real-time ASL recognition services</li>
+                                <li>Improving our recognition accuracy</li>
+                                <li>Enhancing user experience</li>
+                                <li>Technical service optimization</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-4">
+                            <h2>Data Security</h2>
+                            <p>We implement appropriate technical and organizational measures to protect your data:</p>
+                            <ul>
+                                <li>Real-time processing without data storage</li>
+                                <li>Secure data transmission</li>
+                                <li>Regular security assessments</li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .policy-content {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .policy-content h2 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    
+    .policy-content section {
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .policy-content section:last-child {
+        border-bottom: none;
+    }
+    
+    .policy-content ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .policy-content li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+    
+    .card-body {
+        padding: 2rem;
+    }
+    
+    h1 {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+</style>
+{% endblock %} 

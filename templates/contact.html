@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Tivon{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <div class="page-header text-center mb-5">
+                        <h1 class="display-4 mb-2">Contact Us</h1>
+                        <div class="header-underline"></div>
+                    </div>
+                    
+                    <div class="creator-info">
+                        <h2 class="h4 text-center mb-4">About the Creator</h2>
+                        <div class="creator-box p-4 bg-gradient rounded-lg">
+                            <div class="creator-avatar mb-4">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <p class="creator-name mb-3">
+                                <strong>Created by:</strong> 
+                                <span class="highlight">Rehan Khan</span>
+                            </p>
+                            <p class="creator-description mb-3">
+                                Tivon is a project dedicated to breaking down communication barriers through 
+                                real-time American Sign Language recognition. Using advanced AI technology, 
+                                we aim to make ASL more accessible to everyone.
+                            </p>
+                            <div class="social-links mt-4">
+                                <a href="#" class="social-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-link" title="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="social-link" title="Portfolio">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border: none;
+        border-radius: 20px;
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+    }
+
+    .shadow-lg {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .card-body {
+        padding: 3rem;
+    }
+
+    .page-header {
+        position: relative;
+    }
+
+    .header-underline {
+        width: 80px;
+        height: 4px;
+        background: var(--primary-color);
+        margin: 0 auto;
+        border-radius: 2px;
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .creator-box {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(145deg, var(--card-bg) 0%, rgba(76, 175, 80, 0.1) 100%);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .creator-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .creator-avatar {
+        text-align: center;
+        font-size: 4rem;
+        color: var(--primary-color);
+        opacity: 0.8;
+        transition: transform 0.3s ease;
+    }
+
+    .creator-box:hover .creator-avatar {
+        transform: scale(1.1);
+    }
+
+    .creator-name {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .highlight {
+        color: var(--primary-color);
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        background: rgba(76, 175, 80, 0.1);
+    }
+
+    .creator-description {
+        text-align: center;
+        line-height: 1.8;
+        color: var(--text-color);
+        font-size: 1.1rem;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(76, 175, 80, 0.1);
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 2rem;
+        }
+
+        .display-4 {
+            font-size: 2rem;
+        }
+
+        .creator-description {
+            font-size: 1rem;
+        }
+    }
+</style>
+{% endblock %} 

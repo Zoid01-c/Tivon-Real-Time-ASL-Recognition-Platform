@@ -1,0 +1,410 @@
+{% extends "base.html" %}
+
+{% block title %}About American Sign Language{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-header {
+        text-align: center;
+        padding: 6rem 2rem;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-title {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .about-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2.5rem;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .content-section {
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: 3rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(-5deg);
+        transition: all 0.3s ease;
+    }
+
+    .content-section:hover .section-icon {
+        transform: rotate(0deg) scale(1.1);
+    }
+
+    .section-icon i {
+        font-size: 1.8rem;
+        color: white;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .section-text {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .section-text:last-child {
+        margin-bottom: 0;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-icon {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        background: rgba(255, 255, 255, 0.05);
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .stat-content {
+        flex: 1;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .sidebar-section {
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .sidebar-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .sidebar-title i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
+
+    .fact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .fact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .fact-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .fact-icon {
+        color: var(--primary-color);
+        font-size: 1rem;
+    }
+
+    .fact-text {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .about-header {
+            padding: 4rem 1.5rem;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+        }
+
+        .about-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .content-container {
+            padding: 3rem 1.5rem;
+        }
+
+        .content-section,
+        .sidebar-section {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .section-text {
+            font-size: 1rem;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="about-header">
+    <h1 class="about-title">Understanding American Sign Language</h1>
+    <p class="about-subtitle">Discover the rich visual language that bridges communication gaps and empowers the Deaf community</p>
+</header>
+
+<div class="content-container">
+    <div class="content-grid">
+        <main class="main-content">
+            <section class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h2 class="section-title">What is ASL?</h2>
+                </div>
+                <p class="section-text">American Sign Language (ASL) is a complete, natural language that has the same linguistic properties as spoken languages. It is expressed by movements of the hands and face, and is the primary language of many North Americans who are deaf and hard of hearing.</p>
+                <p class="section-text">ASL is a visual language with its own grammar, syntax, and vocabulary distinct from English. It incorporates facial expressions, body postures, and spatial relationships to convey meaning and emotion.</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-globe-americas stat-icon"></i>
+                        <div class="stat-content">
+                            <div class="stat-number">70+ Million</div>
+                            <div class="stat-label">Sign language users worldwide</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-language stat-icon"></i>
+                        <div class="stat-content">
+                            <div class="stat-number">300+</div>
+                            <div class="stat-label">Different sign languages globally</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users stat-icon"></i>
+                        <div class="stat-content">
+                            <div class="stat-number">500,000+</div>
+                            <div class="stat-label">ASL users in North America</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-handshake stat-icon"></i>
+                        <div class="stat-content">
+                            <div class="stat-number">3rd</div>
+                            <div class="stat-label">Most used sign language worldwide</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h2 class="section-title">History of ASL</h2>
+                </div>
+                <p class="section-text">ASL originated in the early 19th century at the American School for the Deaf (ASD) in Hartford, Connecticut. It evolved from a combination of French Sign Language (LSF) and various local sign languages used by deaf communities in America.</p>
+                <p class="section-text">Thomas Hopkins Gallaudet and Laurent Clerc played pivotal roles in establishing the foundation of ASL education in America. Their work led to the establishment of numerous schools for the deaf and the widespread adoption of ASL as the primary language of the American Deaf community.</p>
+            </section>
+
+            <section class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h2 class="section-title">Structure and Grammar</h2>
+                </div>
+                <p class="section-text">ASL has its own grammar that differs from English. Signs are produced by combining specific handshapes, movements, and positions. The language uses facial expressions and body postures as grammatical markers, similar to how spoken languages use tone and inflection.</p>
+                <p class="section-text">Key components of ASL include handshapes (similar to letters in spoken languages), movement (how the hands move), location (where the sign is made), palm orientation, and non-manual markers (facial expressions and body posture).</p>
+            </section>
+        </main>
+
+        <aside class="sidebar-content">
+            <section class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Key Facts
+                </h3>
+                <ul class="fact-list">
+                    <li class="fact-item">
+                        <i class="fas fa-check fact-icon"></i>
+                        <span class="fact-text">ASL is not a universal language - different countries have their own sign languages</span>
+                    </li>
+                    <li class="fact-item">
+                        <i class="fas fa-check fact-icon"></i>
+                        <span class="fact-text">ASL has regional variations and dialects, just like spoken languages</span>
+                    </li>
+                    <li class="fact-item">
+                        <i class="fas fa-check fact-icon"></i>
+                        <span class="fact-text">Facial expressions are a crucial part of ASL grammar</span>
+                    </li>
+                    <li class="fact-item">
+                        <i class="fas fa-check fact-icon"></i>
+                        <span class="fact-text">ASL is recognized as a complete and natural language</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Learning Benefits
+                </h3>
+                <ul class="fact-list">
+                    <li class="fact-item">
+                        <i class="fas fa-star fact-icon"></i>
+                        <span class="fact-text">Enhances visual-spatial skills and cognitive abilities</span>
+                    </li>
+                    <li class="fact-item">
+                        <i class="fas fa-star fact-icon"></i>
+                        <span class="fact-text">Improves communication with the Deaf community</span>
+                    </li>
+                    <li class="fact-item">
+                        <i class="fas fa-star fact-icon"></i>
+                        <span class="fact-text">Opens career opportunities in interpretation and education</span>
+                    </li>
+                    <li class="fact-item">
+                        <i class="fas fa-star fact-icon"></i>
+                        <span class="fact-text">Promotes inclusivity and cultural awareness</span>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+    </div>
+</div>
+{% endblock %} 

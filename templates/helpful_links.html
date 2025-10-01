@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+
+{% block title %}Helpful ASL Resources & Links{% endblock %}
+
+{% block extra_css %}
+<style>
+    .links-header {
+        text-align: center;
+        padding: 6rem 2rem;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .links-title {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .links-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .links-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+    }
+
+    .links-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+
+    .links-section {
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: 3rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(-5deg);
+        transition: all 0.3s ease;
+    }
+
+    .links-section:hover .section-icon {
+        transform: rotate(0deg) scale(1.1);
+    }
+
+    .section-icon i {
+        font-size: 1.8rem;
+        color: white;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .resource-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .resource-item {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .resource-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .resource-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+    }
+
+    .resource-link:hover {
+        transform: translateX(10px);
+    }
+
+    .resource-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .resource-title i {
+        color: var(--primary-color);
+        font-size: 1.1rem;
+    }
+
+    .resource-description {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .resource-meta {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .meta-item i {
+        color: var(--primary-color);
+        font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .links-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .links-header {
+            padding: 4rem 1.5rem;
+        }
+
+        .links-title {
+            font-size: 2.5rem;
+        }
+
+        .links-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .links-container {
+            padding: 3rem 1.5rem;
+        }
+
+        .links-section {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .resource-title {
+            font-size: 1.15rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="links-header">
+    <h1 class="links-title">Helpful ASL Resources</h1>
+    <p class="links-subtitle">Explore our curated collection of valuable resources to support your ASL learning journey</p>
+</header>
+
+<div class="links-container">
+    <div class="links-grid">
+        <section class="links-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h2 class="section-title">Learning Resources</h2>
+            </div>
+            <ul class="resource-list">
+                <li class="resource-item">
+                    <a href="https://www.lifeprint.com" target="_blank" rel="noopener" class="resource-link">
+                        <div class="resource-title">
+                            <i class="fas fa-book"></i>
+                            ASL University (ASLU)
+                        </div>
+                        <p class="resource-description">Comprehensive free ASL lessons, dictionary, and teaching resources by Dr. Bill Vicars.</p>
+                        <div class="resource-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-globe"></i>
+                                Website
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-check-circle"></i>
+                                Free Access
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="resource-item">
+                    <a href="https://www.signingsavvy.com" target="_blank" rel="noopener" class="resource-link">
+                        <div class="resource-title">
+                            <i class="fas fa-video"></i>
+                            SigningSavvy
+                        </div>
+                        <p class="resource-description">Sign language dictionary with video examples and learning resources.</p>
+                        <div class="resource-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-globe"></i>
+                                Website
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-star"></i>
+                                Premium Features
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="resource-item">
+                    <a href="https://www.handspeak.com" target="_blank" rel="noopener" class="resource-link">
+                        <div class="resource-title">
+                            <i class="fas fa-hands"></i>
+                            HandSpeak
+                        </div>
+                        <p class="resource-description">Online ASL dictionary, tutorials, and resources for learning sign language.</p>
+                        <div class="resource-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-globe"></i>
+                                Website
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-check-circle"></i>
+                                Free Access
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="links-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2 class="section-title">Community & Support</h2>
+            </div>
+            <ul class="resource-list">
+                <li class="resource-item">
+                    <a href="https://www.nad.org" target="_blank" rel="noopener" class="resource-link">
+                        <div class="resource-title">
+                            <i class="fas fa-building"></i>
+                            National Association of the Deaf
+                        </div>
+                        <p class="resource-description">Leading organization for deaf and hard of hearing individuals in the United States.</p>
+                        <div class="resource-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-globe"></i>
+                                Organization
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-info-circle"></i>
+                                Resources & Advocacy
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="resource-item">
+                    <a href="https://www.gallaudet.edu" target="_blank" rel="noopener" class="resource-link">
+                        <div class="resource-title">
+                            <i class="fas fa-university"></i>
+                            Gallaudet University
+                        </div>
+                        <p class="resource-description">World's only university designed to be barrier-free for deaf and hard of hearing students.</p>
+                        <div class="resource-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-globe"></i>
+                                Institution
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                Education
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="resource-item">
+                    <a href="https://www.deafchildren.org" target="_blank" rel="noopener" class="resource-link">
+                        <div class="resource-title">
+                            <i class="fas fa-child"></i>
+                            American Society for Deaf Children
+                        </div>
+                        <p class="resource-description">Support and resources for families with deaf children.</p>
+                        <div class="resource-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-globe"></i>
+                                Organization
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-heart"></i>
+                                Family Support
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
+{% endblock %} 

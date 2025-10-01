@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+
+{% block title %}ASL Resources & Support{% endblock %}
+
+{% block extra_css %}
+<style>
+    .resources-header {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: var(--body-bg);
+    }
+
+    .resources-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 1rem;
+    }
+
+    .resources-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .resource-section {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 2rem;
+    }
+
+    .resource-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .resource-item {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .resource-item:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .resource-name {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .resource-description {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .sidebar-card {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .academic-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .academic-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .academic-name {
+        color: var(--text-color);
+        font-weight: 500;
+    }
+
+    .academic-description {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .additional-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .additional-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .additional-name {
+        color: var(--text-color);
+        font-weight: 500;
+    }
+
+    .additional-description {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .cta-section {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    .cta-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-text {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: var(--primary-color);
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background: var(--primary-light);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+    }
+
+    @media (max-width: 1024px) {
+        .content-wrapper {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .resources-title {
+            font-size: 2rem;
+        }
+
+        .content-wrapper {
+            padding: 2rem 1rem;
+        }
+
+        .resource-section,
+        .sidebar-card {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="resources-header">
+    <h1 class="resources-title">ASL Resources & Support</h1>
+    <p class="resources-subtitle">Connecting you with valuable ASL learning and support resources</p>
+</header>
+
+<div class="content-wrapper">
+    <main class="main-content">
+        <section class="resource-section">
+            <h2 class="section-title">Online Courses & Learning Platforms</h2>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <h3 class="resource-name">SignLanguage101</h3>
+                    <p class="resource-description">Free ASL lessons with video tutorials and practice exercises</p>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-name">Start ASL</h3>
+                    <p class="resource-description">Comprehensive ASL courses for beginners to advanced learners</p>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-name">Gallaudet University ASL Connect</h3>
+                    <p class="resource-description">Professional ASL courses from the world's leading deaf university</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="resource-section">
+            <h2 class="section-title">Mobile Apps & Tools</h2>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <h3 class="resource-name">Spread The Sign</h3>
+                    <p class="resource-description">International sign language dictionary with video demonstrations</p>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-name">ASL App</h3>
+                    <p class="resource-description">Learn ASL on the go with native signers (iOS & Android)</p>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-name">SignASL</h3>
+                    <p class="resource-description">Extensive ASL dictionary with example sentences and usage</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="resource-section">
+            <h2 class="section-title">Community Organizations</h2>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <h3 class="resource-name">National Association of the Deaf (NAD)</h3>
+                    <p class="resource-description">Leading civil rights organization of, by, and for deaf and hard-of-hearing people in the US</p>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-name">American Society for Deaf Children (ASDC)</h3>
+                    <p class="resource-description">Supporting families with deaf children and promoting early access to language</p>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-name">Registry of Interpreters for the Deaf (RID)</h3>
+                    <p class="resource-description">Professional organization advancing excellence in interpretation services</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="resource-section">
+            <h2 class="section-title">Educational Resources</h2>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <h3 class="resource-name">ASL Pro</h3>
+                    <p class="resource-description">Free ASL dictionary and resources for educators</p>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-name">HandSpeak</h3>
+                    <p class="resource-description">Online sign language resources, dictionary, and learning materials</p>
+                </div>
+                <div class="resource-item">
+                    <h3 class="resource-name">DeafCulture.com</h3>
+                    <p class="resource-description">Resources about deaf culture, history, and community</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <aside class="sidebar">
+        <div class="sidebar-card">
+            <h3 class="sidebar-title">Research & Academic Resources</h3>
+            <div class="academic-list">
+                <div class="academic-item">
+                    <div class="academic-name">Sign Language Studies Journal</div>
+                    <div class="academic-description">Academic journal focusing on sign language research</div>
+                </div>
+                <div class="academic-item">
+                    <div class="academic-name">Deaf Studies Digital Journal</div>
+                    <div class="academic-description">The world's first peer-reviewed digital journal in sign language</div>
+                </div>
+                <div class="academic-item">
+                    <div class="academic-name">American Sign Language Teachers Association</div>
+                    <div class="academic-description">Professional resources for ASL educators</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <h3 class="sidebar-title">Additional Resources</h3>
+            <div class="additional-list">
+                <div class="additional-item">
+                    <div class="additional-name">Deaf Library</div>
+                    <div class="additional-description">Collection of deaf-related resources and literature</div>
+                </div>
+                <div class="additional-item">
+                    <div class="additional-name">Communication Service for the Deaf</div>
+                    <div class="additional-description">Support services and resources for the deaf community</div>
+                </div>
+                <div class="additional-item">
+                    <div class="additional-name">Described and Captioned Media Program</div>
+                    <div class="additional-description">Free educational media for the deaf and hard of hearing</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<section class="cta-section">
+    <h2 class="cta-title">Get Started with ASL</h2>
+    <p class="cta-text">Begin your ASL journey with our interactive recognition tool and these valuable resources.</p>
+    <a href="{{ url_for('recognition') }}" class="cta-button">
+        <i class="fas fa-play"></i>
+        Start Learning ASL
+    </a>
+</section>
+{% endblock %} 

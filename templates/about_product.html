@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+
+{% block title %}About Our ASL Recognition System{% endblock %}
+
+{% block extra_css %}
+<style>
+    .product-header {
+        text-align: center;
+        padding: 6rem 2rem;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-title {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .product-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .product-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+
+    .product-section {
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: 3rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(-5deg);
+        transition: all 0.3s ease;
+    }
+
+    .product-section:hover .section-icon {
+        transform: rotate(0deg) scale(1.1);
+    }
+
+    .section-icon i {
+        font-size: 1.8rem;
+        color: white;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .feature-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .feature-content {
+        flex: 1;
+    }
+
+    .feature-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-description {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .tech-stack {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .tech-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .tech-item:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .tech-icon {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+    }
+
+    .tech-name {
+        color: var(--text-color);
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .product-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tech-stack {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .product-header {
+            padding: 4rem 1.5rem;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+        }
+
+        .product-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .product-container {
+            padding: 3rem 1.5rem;
+        }
+
+        .product-section {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+        }
+
+        .tech-stack {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="product-header">
+    <h1 class="product-title">AI-Powered ASL Recognition</h1>
+    <p class="product-subtitle">Discover how our advanced technology makes learning American Sign Language more accessible and interactive</p>
+</header>
+
+<div class="product-container">
+    <div class="product-grid">
+        <section class="product-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2 class="section-title">Key Features</h2>
+            </div>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Real-time Recognition</h3>
+                        <p class="feature-description">Advanced computer vision technology provides instant feedback on your ASL signs through your webcam.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">AI Learning Model</h3>
+                        <p class="feature-description">Our sophisticated AI model is trained on thousands of ASL signs to ensure accurate recognition and feedback.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Cross-platform Support</h3>
+                        <p class="feature-description">Access our recognition system from any device with a camera and web browser.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Privacy Focused</h3>
+                        <p class="feature-description">All processing is done locally in your browser, ensuring your data stays private and secure.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="product-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h2 class="section-title">Technology Stack</h2>
+            </div>
+            <p class="feature-description" style="margin-bottom: 2rem;">Our ASL recognition system is built using cutting-edge technologies to ensure reliability, performance, and accessibility.</p>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <i class="fab fa-python tech-icon"></i>
+                    <span class="tech-name">Python</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-brain tech-icon"></i>
+                    <span class="tech-name">TensorFlow</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-js tech-icon"></i>
+                    <span class="tech-name">JavaScript</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-camera tech-icon"></i>
+                    <span class="tech-name">OpenCV</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-html5 tech-icon"></i>
+                    <span class="tech-name">HTML5</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-css3-alt tech-icon"></i>
+                    <span class="tech-name">CSS3</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %} 
