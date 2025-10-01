@@ -55,8 +55,7 @@ Tivon combines:
 * **Flask Backend & WebSockets:** For real-time communication
 * **Frontend:** Interactive HTML, CSS, and JavaScript interface
   
-⚠️ Note: The ASL model is not included in this repository. You must provide your own trained model
-All recognition happens **locally** for maximum privacy.
+⚠️ Note: The ASL model is not included in this repository. You will need to provide your own trained model. All recognition is performed locally to ensure maximum privacy.
 
 ---
 
