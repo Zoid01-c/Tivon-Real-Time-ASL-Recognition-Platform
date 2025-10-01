@@ -55,6 +55,22 @@ Click any thumbnail to view the full screenshot:
 
 ---
 
+## 🎥 Demo Video  
+
+You can watch the demo here:  
+
+[![Demo Video](ScreenShot/Home.png)](ScreenShot/Demo.mp4)  
+
+*(Click the thumbnail above to view the demo – opens the video file from the repo.)*  
+
+Or directly embed the video (may not always play inline on GitHub):  
+
+```html
+<video src="ScreenShot/Demo.mp4" width="600" controls></video>
+````
+
+---
+
 ## ⚙️ How It Works
 
 Tivon combines:
@@ -117,7 +133,3 @@ Contributions are welcome! See `CONTRIBUTING.md` for guidelines.
 ## 📬 Contact
 
 Created by **[Khan Rehan]** – reach out with questions or suggestions!
-
----
-
-
